@@ -1,6 +1,6 @@
 .PHONY: clean all
 
-all: report/count_report.html
+all: report/count_report.html report/count_report_files/
 
 # Count the words
 results/isles.dat: data/isles.txt scripts/wordcount.py
@@ -23,7 +23,7 @@ results/figure/sierra.png: results/sierra.dat scripts/plotcount.py
 	python scripts/plotcount.py --input_file=results/sierra.dat --output_file=results/figure/sierra.png
 
 # Renders to a report
-report/count_report.html: results/figure/isles.png results/figure/abyss.png results/figure/last.png results/figure/sierra.png report/count_report.qmd
+report/count_report.html report/count_report_files/: results/figure/isles.png results/figure/abyss.png results/figure/last.png results/figure/sierra.png report/count_report.qmd
 	quarto render report/count_report.qmd
 
 clean:
@@ -31,3 +31,9 @@ clean:
 	rm -f results/abyss.dat
 	rm -f results/last.dat
 	rm -f results/sierra.dat
+	rm -f results/figure/isles.png \
+		results/figure/abyss.png \
+		results/figure/last.png \
+		results/figure/sierra.png
+	rm -rf report/count_report.html \
+		report/count_report_files
