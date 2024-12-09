@@ -31,7 +31,3 @@ clean:
 	rm -f results/abyss.dat
 	rm -f results/last.dat
 	rm -f results/sierra.dat
-	rm -f results/figure/isles.png
-	rm -f results/figure/abyss.png
-	rm -f results/figure/last.png
-	rm -f results/figure/sierra.png
